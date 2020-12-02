@@ -12,14 +12,14 @@ export default function Home() {
 
   return (
     <Layout>
-      <h1>Index</h1>
-
       <section className="row">
         <ShopItem
           title="Article n°1"
           description="Lorem ipsum dolor sit amet"
         />
+
         <ShopItem title="Fraise Tagada" description="Une fraise rouge" />
+
         <ShopItem
           title="Article n°3"
           description="Lorem ipsum dolor sit amet"
@@ -30,8 +30,6 @@ export default function Home() {
           description="Lorem ipsum dolor sit amet"
         />
       </section>
-
-      {/* SHOP ITEM */}
     </Layout>
   );
 }
