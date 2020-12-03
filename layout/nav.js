@@ -1,13 +1,17 @@
 import Link from "next/link";
+import UserContext from "../stores/UserContext";
+import { useContext } from "react";
 
 export default function Nav() {
+  const { user, signIn, signOut } = useContext(UserContext);
   return (
-    <nav class="navbar navbar-expand navbar-dark bg-dark">
+    <nav className="navbar navbar-expand navbar-dark bg-dark">
       <Link href="/">
-        <a class="navbar-brand">Hariba</a>
+        <a className="navbar-brand">Hariba</a>
       </Link>
+
       <button
-        class="navbar-toggler"
+        className="navbar-toggler"
         type="button"
         data-toggle="collapse"
         data-target="#navbarsExample02"
@@ -15,28 +19,51 @@ export default function Nav() {
         aria-expanded="false"
         aria-label="Toggle navigation"
       >
-        <span class="navbar-toggler-icon"></span>
+        <span className="navbar-toggler-icon"></span>
       </button>
 
-      <div class="collapse navbar-collapse" id="navbarsExample02">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
+      <div
+        className="collapse navbar-collapse justify-content-between"
+        id="navbarsExample02"
+      >
+        <ul className="navbar-nav mr-auto">
+          <li className="nav-item active">
             <Link href="/">
-              <a class="nav-link">
-                Accueil <span class="sr-only">(current)</span>
+              <a className="nav-link">
+                Accueil <span className="sr-only">(current)</span>
               </a>
             </Link>
           </li>
-          <li class="nav-item">
+          <li className="nav-item">
             <Link href="/boutique">
-              <a class="nav-link">Boutique</a>
+              <a className="nav-link">Boutique</a>
             </Link>
           </li>
-          <li class="nav-item">
+          <li className="nav-item">
             <Link href="/blog">
-              <a class="nav-link">Notre blog</a>
+              <a className="nav-link">Notre blog</a>
             </Link>
           </li>
+        </ul>
+
+        <ul className="navbar-nav">
+          {user.name !== "" && (
+            <li className="nav-item navbar-text mr-4">{user.name}</li>
+          )}
+
+          {user.name !== "" ? (
+            <li className="nav-item">
+              <button className={"btn btn-light"} onClick={signOut}>
+                Se déconnecter
+              </button>
+            </li>
+          ) : (
+            <li className="nav-item">
+              <button className={"btn btn-light"} onClick={signIn}>
+                Se connecter
+              </button>
+            </li>
+          )}
         </ul>
       </div>
     </nav>
