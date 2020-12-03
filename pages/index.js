@@ -2,9 +2,13 @@ import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import Layout from "../layout/layout";
 import ShopItem from "../components/ShopItem/ShopItem";
+import UserContext from "../stores/UserContext";
+import { useContext } from "react";
 
 export default function Home() {
   // COMMENTAIRE JS INLINE
+
+  const { user } = useContext(UserContext);
 
   /*
   COMMENTAIRE JS
@@ -12,6 +16,7 @@ export default function Home() {
 
   return (
     <Layout>
+      {user.name !== "" && <h1>Bonjour {user.name}</h1>}
       <section className="row">
         <ShopItem
           title="Article n°1"

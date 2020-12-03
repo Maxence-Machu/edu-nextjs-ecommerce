@@ -4,6 +4,7 @@ import { useContext } from "react";
 
 export default function Nav() {
   const { user, signIn, signOut } = useContext(UserContext);
+  
   return (
     <nav className="navbar navbar-expand navbar-dark bg-dark">
       <Link href="/">

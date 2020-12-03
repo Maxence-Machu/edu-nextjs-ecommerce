@@ -2,6 +2,7 @@ import "../styles/globals.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import UserContext from "../stores/UserContext";
 import { useState } from "react";
+
 function MyApp({ Component, pageProps }) {
   const [user, setUser] = useState({ name: "" });
 
