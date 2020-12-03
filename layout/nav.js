@@ -32,6 +32,11 @@ export default function Nav() {
               <a class="nav-link">Boutique</a>
             </Link>
           </li>
+          <li class="nav-item">
+            <Link href="/blog">
+              <a class="nav-link">Notre blog</a>
+            </Link>
+          </li>
         </ul>
       </div>
     </nav>

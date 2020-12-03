@@ -2,8 +2,7 @@ import Axios from "axios";
 import Layout from "../../layout/layout";
 import ShopItem from "../../components/ShopItem/ShopItem";
 
-export default function Blog() {
-  let articles = [];
+export default function Blog({ articles }) {
   return (
     <Layout>
       <h1>Bienvenue sur mon blog</h1>
@@ -12,8 +11,9 @@ export default function Blog() {
         {articles.map((article) => {
           return (
             <ShopItem
-              description={article.ArticleContent}
+              description={""}
               title={article.Title}
+              link={`/blog/${article.ArticleMetaComponent.Slug}`}
             />
           );
         })}
@@ -23,6 +23,8 @@ export default function Blog() {
 }
 
 /*
+Requête à personnaliser avec vos propres données
+*/
 export const getServerSideProps = async (context) => {
   const res = await Axios({
     method: "POST",
@@ -33,7 +35,6 @@ export const getServerSideProps = async (context) => {
         articles {
             Title,
             created_at,
-            ArticleContent,
             ArticleMetaComponent {
                 SEODesc,
                 SEOTitle,
@@ -50,8 +51,7 @@ export const getServerSideProps = async (context) => {
 
   return {
     props: {
-      articles: res.data.data.articles,
+      articles: res.data.data.articles || [],
     },
   };
 };
-*/

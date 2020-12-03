@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function ShopItem(props) {
   return (
@@ -15,12 +16,11 @@ export default function ShopItem(props) {
           <p className="card-text">{props.description}</p>
           <div className="d-flex justify-content-between align-items-center">
             <div className="btn-group">
-              <button
-                type="button"
-                className="btn btn-sm btn-outline-secondary"
-              >
-                Acheter
-              </button>
+              {props.link && (
+                <Link href={props.link}>
+                  <a>Acheter</a>
+                </Link>
+              )}
             </div>
           </div>
         </div>
